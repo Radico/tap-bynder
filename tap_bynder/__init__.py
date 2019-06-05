@@ -6,13 +6,13 @@ STREAMS = [
 ]
 
 
-REQUIRED_CONFIG_KEYS = [] # TODO: Config correctly
-
-
-class BynderTap(TapExecutor):
-    url = ''
-    pagination_type = 'next'
-    auth_type = 'basic'
+REQUIRED_CONFIG_KEYS = [
+    'consumer_secret',
+    'consumer_key',
+    'accountdomain',
+    'token_key',
+    'token_secret',
+]
 
 
 def main():
