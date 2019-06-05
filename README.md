@@ -9,8 +9,8 @@ Singer tap for extracting from Bynder API (https://bynder.docs.apiary.io/#introd
 
 #### Discover mode:
 
-`tap-bydner --config config.json --discover > catalog.json`
+`tap-bynder --config config.json --discover > catalog.json`
 
 #### Sync mode:
 
-`tap-bydner --config config.json -p catalog.json -s state.json`
+`tap-bynder --config config.json -p catalog.json -s state.json`
