@@ -27,14 +27,3 @@ class BydnerExecutor(TapExecutor):
         token_secret = self.config.get('token_secret')
         return OAuth1(oauth_consumer_key, consumer_secret, oauth_token,
                       token_secret)
-
-
-
-
-
-
-
-
-
-
-f

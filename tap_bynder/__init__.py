@@ -1,8 +1,10 @@
 from tap_kit import TapExecutor, BaseClient, main_method
+from .executor import BydnerExecutor
+from .assets import AssetsStream
 
 
 STREAMS = [
-    # TODO: Fill in with Bynder Streams
+    AssetsStream
 ]
 
 
@@ -18,7 +20,7 @@ REQUIRED_CONFIG_KEYS = [
 def main():
     main_method(
         REQUIRED_CONFIG_KEYS,
-        BynderTap,
+        BydnerExecutor,
         BaseClient,
         STREAMS
     )
