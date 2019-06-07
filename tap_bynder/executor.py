@@ -50,7 +50,7 @@ class BydnerExecutor(TapExecutor):
                 raise AttributeError(f'Received status_code {res.status_code}')
 
             records = res.json()
-            transform_write_and_count(stream, [json.dumps(r) for r in records])
+            transform_write_and_count(stream, records)
 
             last_updated = self.get_latest_for_next_call(
                 records,
@@ -82,8 +82,7 @@ class BydnerExecutor(TapExecutor):
                 raise AttributeError(f'Received status_code {res.status_code}')
 
             records = res.json()
-            records = [json.dumps(r) for r in records]
-            transform_write_and_count(stream, [json.dumps(r) for r in records])
+            transform_write_and_count(stream, records)
             request_config = self.update_for_next_call(
                 res,
                 request_config
@@ -92,9 +91,9 @@ class BydnerExecutor(TapExecutor):
     def build_params(self, stream, last_updated=None):
         """Set initial parameters"""
         return {
-            'limit': 1000,
-            'dateCreated': last_updated,
-            'page': 1
+            "limit": 1000,
+            "dateCreated": last_updated,
+            "page": 1
         }
 
     def update_for_next_call(self, res, request_config):
