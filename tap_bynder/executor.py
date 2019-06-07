@@ -37,10 +37,10 @@ class BydnerExecutor(TapExecutor):
             stream.update_and_return_bookmark(), self.replication_key_format)
 
         request_config = {
-            'url': self.url,
-            'headers': self.build_headers(),
-            'params': self.build_params(stream, last_updated=last_updated),
-            'run': True
+            "url": self.url,
+            "headers": self.build_headers(),
+            "params": self.build_params(stream, last_updated=last_updated),
+            "run": True
         }
 
         while request_config['run']:
@@ -69,10 +69,10 @@ class BydnerExecutor(TapExecutor):
     def call_full_stream(self, stream):
         """Method to call all fully synched streams"""
         request_config = {
-            'url': self.url,
-            'headers': self.build_headers(),
-            'params': self.build_params(stream),
-            'run': True
+            "url": self.url,
+            "headers": self.build_headers(),
+            "params": self.build_params(stream),
+            "run": True
         }
 
         while request_config['run']:
