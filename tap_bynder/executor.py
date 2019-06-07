@@ -1,6 +1,7 @@
 import singer
 import time
 import hashlib
+import json
 from requests_oauthlib import OAuth1
 
 from tap_kit import TapExecutor
@@ -49,6 +50,7 @@ class BydnerExecutor(TapExecutor):
                 raise AttributeError(f'Received status_code {res.status_code}')
 
             records = res.json()
+            records = [json.dumps(r) for r in records]
             transform_write_and_count(stream, records)
 
             last_updated = self.get_latest_for_next_call(
@@ -80,7 +82,8 @@ class BydnerExecutor(TapExecutor):
             if res.status_code != 200:
                 raise AttributeError(f'Received status_code {res.status_code}')
 
-            records = res.json()[0]
+            records = res.json()
+            records = [json.dumps(r) for r in records]
             transform_write_and_count(stream, records)
             request_config = self.update_for_next_call(
                 res,
