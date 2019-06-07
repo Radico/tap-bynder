@@ -14,6 +14,7 @@ setup(
         'requests==2.18.4',
         "pendulum==1.2.0",
         "tap-kit==0.1.1",
+        "requests_oauthlib==1.2.0"
     ],
     dependency_links=[
         "https://github.com/Radico/tap-kit/tarball/master#egg=tap-kit-0.1.1",
