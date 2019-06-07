@@ -50,8 +50,7 @@ class BydnerExecutor(TapExecutor):
                 raise AttributeError(f'Received status_code {res.status_code}')
 
             records = res.json()
-            records = [json.dumps(r) for r in records]
-            transform_write_and_count(stream, records)
+            transform_write_and_count(stream, [json.dumps(r) for r in records])
 
             last_updated = self.get_latest_for_next_call(
                 records,
@@ -84,7 +83,7 @@ class BydnerExecutor(TapExecutor):
 
             records = res.json()
             records = [json.dumps(r) for r in records]
-            transform_write_and_count(stream, records)
+            transform_write_and_count(stream, [json.dumps(r) for r in records])
             request_config = self.update_for_next_call(
                 res,
                 request_config
