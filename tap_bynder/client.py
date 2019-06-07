@@ -1,13 +1,10 @@
 import singer
 import backoff
+import requests
 
 from tap_kit import BaseClient
 
 LOGGER = singer.get_logger()
-
-
-class RateLimitException(Exception):
-    pass
 
 
 class BynderClient(BaseClient):
@@ -17,6 +14,6 @@ class BynderClient(BaseClient):
         return requests.request(
             method,
             request_config['url'],
-            auth=request_config['headers'],
             params=request_config['params'],
+            auth=request_config['headers'],
             json=body)

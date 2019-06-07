@@ -7,6 +7,8 @@ class AssetsStream(Stream):
     meta_fields = dict(
         key_properties=['id'],
         replication_method='incremental',
+        replication_key = 'dateModified',
+        incremental_search_key = 'dateModified',
         selected_by_default=False
     )
 
