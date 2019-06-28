@@ -8,6 +8,7 @@ from tap_kit import TapExecutor
 from tap_kit.utils import transform_write_and_count, \
     format_last_updated_for_request
 
+LOGGER = singer.get_logger()
 
 class BydnerExecutor(TapExecutor):
 
@@ -35,7 +36,7 @@ class BydnerExecutor(TapExecutor):
         """Method to call all incremental streams"""
         last_updated = format_last_updated_for_request(
             stream.update_and_return_bookmark(), self.replication_key_format)
-
+        logger.info(f'the last updated time is {last_updated}')
         request_config = {
             "url": self.url,
             "headers": self.build_headers(),
