@@ -17,7 +17,7 @@ setup(
         "requests_oauthlib==1.2.0"
     ],
     dependency_links=[
-        "https://github.com/Radico/tap-kit/tarball/master#egg=tap-kit-0.1.1",
+        "https://github.com/dmzobel/tap-kit/tarball/master#egg=tap-kit-0.1.1",
     ],
     entry_points="""
     [console_scripts]
