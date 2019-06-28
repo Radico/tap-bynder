@@ -5,8 +5,8 @@ import json
 from requests_oauthlib import OAuth1
 
 from tap_kit import TapExecutor
-from tap_kit.utils import transform_write_and_count
-from .utils import format_last_updated_for_request
+from tap_kit.utils import transform_write_and_count, \
+    format_last_updated_for_request
 
 LOGGER = singer.get_logger()
 
@@ -92,7 +92,6 @@ class BydnerExecutor(TapExecutor):
         """Set initial parameters"""
         return {
             "limit": 1000,
-            "dateModified": last_updated,
             "page": 1
         }
 
