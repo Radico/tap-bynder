@@ -5,8 +5,8 @@ import json
 from requests_oauthlib import OAuth1
 
 from tap_kit import TapExecutor
-from tap_kit.utils import transform_write_and_count, \
-    format_last_updated_for_request
+from tap_kit.utils import transform_write_and_count
+from .utils import format_last_updated_for_request
 
 LOGGER = singer.get_logger()
 
@@ -36,7 +36,6 @@ class BydnerExecutor(TapExecutor):
         """Method to call all incremental streams"""
         last_updated = format_last_updated_for_request(
             stream.update_and_return_bookmark(), self.replication_key_format)
-        LOGGER.info(f'the last updated time is {last_updated}')
         request_config = {
             "url": self.url,
             "headers": self.build_headers(),
@@ -93,7 +92,7 @@ class BydnerExecutor(TapExecutor):
         """Set initial parameters"""
         return {
             "limit": 1000,
-            "dateCreated": last_updated,
+            "dateModified": last_updated,
             "page": 1
         }
 
