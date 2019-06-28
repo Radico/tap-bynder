@@ -36,7 +36,7 @@ class BydnerExecutor(TapExecutor):
         """Method to call all incremental streams"""
         last_updated = format_last_updated_for_request(
             stream.update_and_return_bookmark(), self.replication_key_format)
-        logger.info(f'the last updated time is {last_updated}')
+        LOGGER.info(f'the last updated time is {last_updated}')
         request_config = {
             "url": self.url,
             "headers": self.build_headers(),
