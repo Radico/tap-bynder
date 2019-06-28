@@ -11,6 +11,7 @@ class BynderClient(BaseClient):
 
     @staticmethod
     def requests_method(method, request_config, body):
+        LOGGER.info(request_config)
         return requests.request(
             method,
             request_config['url'],
