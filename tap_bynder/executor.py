@@ -82,11 +82,24 @@ class BydnerExecutor(TapExecutor):
                 raise AttributeError(f'Received status_code {res.status_code}')
 
             records = res.json()
+            records = self._add_pdf_s3_link(records, request_config)
             transform_write_and_count(stream, records)
             request_config = self.update_for_next_call(
                 res,
                 request_config
             )
+
+    def _add_pdf_s3_link(self, records, request_config):
+        """We want to add the s3 location for pdfs"""
+        for record in records:
+            extensions = record['extension']
+            if 'pdf' in extensions or 'PDF' in extensions:
+                request_config['url'] = self.url
+                request_config['url'] += record['id'] + '/download/'
+                res = self.client.make_request(request_config)
+                time.sleep(1)
+                record['s3_location'] = res.json()['s3_file']
+        return records
 
     def build_params(self, stream, last_updated=None):
         """Set initial parameters"""
