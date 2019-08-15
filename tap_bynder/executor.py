@@ -110,6 +110,7 @@ class BydnerExecutor(TapExecutor):
 
     def update_for_next_call(self, res, request_config):
         request_config['params']['page'] += 1
+        request_config['url'] = self.url
         if len(res.json()) < request_config['params']['limit']:
             request_config['run'] = False
         return request_config
