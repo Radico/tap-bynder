@@ -13,7 +13,7 @@ setup(
         "singer-python==5.2.0",
         'requests==2.18.4',
         "pendulum==1.2.0",
-        "tap-kit==0.1.1",
+        "tap-kit @ git+https://github.com/dmzobel/tap-kit.git@master",
         "requests_oauthlib==1.2.0"
     ],
     dependency_links=[
