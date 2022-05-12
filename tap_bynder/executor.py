@@ -92,8 +92,8 @@ class BydnerExecutor(TapExecutor):
     def _add_pdf_s3_link(self, records, request_config):
         """We want to add the s3 location for pdfs"""
         for record in records:
-            extensions = record['extension']
-            if 'pdf' in extensions or 'PDF' in extensions:
+            extensions = record.get('extension')
+            if extensions and ('pdf' in extensions or 'PDF' in extensions):
                 request_config['url'] = self.url
                 request_config['url'] += record['id'] + '/download/'
                 res = self.client.make_request(request_config)
