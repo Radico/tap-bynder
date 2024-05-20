@@ -11,7 +11,7 @@ setup(
     py_modules=["tap_bynder"],
     install_requires=[
         "singer-python==5.2.0",
-        'requests==2.18.4',
+        'requests==2.32.0',
         "pendulum==1.2.0",
         "tap-kit @ git+https://github.com/dmzobel/tap-kit.git@main",
         "requests_oauthlib==1.2.0"
